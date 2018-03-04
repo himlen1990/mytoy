@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<robot name="toydog">
+
+<material name="blue">	
+    <color rgba="0 0 0.8 1"/>
+  </material>
+  <material name="black">
+    <color rgba="0 0 0 1"/>
+  </material>
+  <material name="white">
+    <color rgba="1 1 1 1"/>
+  </material>       
+
+
+
+  <link name = "base_link">
+   <visual>
+    <geometry>
+     <box size="0.6 0.3 0.1" />
+    </geometry>
+
+     <material name = "blue"/>
+     <origin rpy="0 0 0" xyz="0 0 0.5"/>
+    </visual>
+   </link> 
+
+<!--first leg-->
+  <link name = "fore_leg_right">
+   <visual>
+     <material name = "white"/>
+     <origin rpy="0 0 0" xyz="0 0 -0.15"/>
+    <geometry>
+     <box size="0.1 0.1 0.3" />
+    </geometry>
+    </visual>
+   </link> 
+
+
+  <joint name="joint1" type="revolute">
+    <parent link="base_link"/>
+    <child link="fore_leg_right"/>
+    <origin xyz="0.2 0.2 0.5"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="-1.57" upper="1.57" effort="0.5293" velocity="6.159937255" />
+  </joint>
+
+
+  <link name = "fore_leg_right2">
+   <visual>
+    <geometry>
+     <box size="0.15 0.1 0.1" />
+    </geometry>
+     <material name = "white"/>
+     <origin rpy="0 0 0" xyz="0.05 0 -0.05"/>
+    </visual>
+   </link> 
+
+  <joint name="joint2" type="revolute">
+    <parent link="fore_leg_right"/>
+    <child link="fore_leg_right2"/>
+    <origin xyz="0 0 -0.3"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="-0.3" upper="1.57" effort="0.5293" velocity="6.159937255" />
+  </joint>
+
+ </robot>
